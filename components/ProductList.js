@@ -2,6 +2,7 @@
 import * as React from 'react';
 import {View, Text, FlatList, TouchableOpacity, StyleSheet} from 'react-native';
 import {useEffect, useState} from "react";
+import globalStyles from '../GlobalStyles';
 
 // Importerer firebase
 import { getDatabase, ref, onValue } from "firebase/database";
@@ -59,7 +60,7 @@ function ProductList({navigation}){
             keyExtractor={(item, index) => productKeys[index]}
             renderItem={({ item, index }) => {
                 return(
-                    <TouchableOpacity style={styles.container} onPress={() => handleSelectProduct(productKeys[index])}>
+                    <TouchableOpacity style={globalStyles.container} onPress={() => handleSelectProduct(productKeys[index])}>
                         <Text>
                             {item.vare} - udløbsdato: {item.udløbsdato}
                         </Text>
@@ -72,18 +73,3 @@ function ProductList({navigation}){
 
 // Eksporterer ProductList-komponenten.
 export default ProductList;
-
-// Definerer designet
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        borderWidth: 1,
-        borderRadius: 10,
-        margin: 2,
-        padding: 10,
-        height: 70,
-        justifyContent: 'center'
-    },
-    label: { fontWeight: 'bold' },
-});

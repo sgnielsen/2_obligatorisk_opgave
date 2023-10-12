@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { View, Text, Platform, FlatList, StyleSheet, Button, Alert } from 'react-native';
 import {useEffect, useState} from "react";
+import globalStyles from '../GlobalStyles';
 
 // Importer firebase
 import { getDatabase, ref, remove } from "firebase/database";
@@ -63,20 +64,20 @@ function ProductDetails ({route,navigation}){
 
     // Returnerer JSX for produktets detaljeside.
     return (
-        <View style={styles.container}>
+        <View style={globalStyles.containerProductDetalis}>
             {
                 Object.entries(product).map((item,index)=>{
                     return(
-                        <View style={styles.row} key={index}>
+                        <View style={globalStyles.row} key={index}>
                             {/*Product keys navn*/}
-                            <Text style={styles.label}>{item[0]} </Text>
+                            <Text style={globalStyles.label}>{item[0]} </Text>
                             {/*Product values navne */}
-                            <Text style={styles.value}>{item[1]}</Text>
+                            <Text style={globalStyles.value}>{item[1]}</Text>
                         </View>
                     )
                 })
             }
-            <View style={styles.buttonContainer}>
+            <View style={globalStyles.buttonContainer}>
                 <Button title="Edit" onPress={ () => handleEdit()} />
                 <Button title="Delete" onPress={() => confirmDelete()} />
             </View>
@@ -86,19 +87,3 @@ function ProductDetails ({route,navigation}){
 
 // Eksporterer ProductDetails-komponenten
 export default ProductDetails;
-
-// Definerer designet
-const styles = StyleSheet.create({
-    container: { flex: 1, justifyContent: 'flex-start' },
-    row: {
-        margin: 5,
-        padding: 5,
-        flexDirection: 'row',
-    },
-    label: { width: 100, fontWeight: 'bold' },
-    value: { flex: 1 },
-    buttonContainer: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 20,}
-});

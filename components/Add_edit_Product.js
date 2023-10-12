@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import {View,Text,StyleSheet,TextInput,Button,Alert,ScrollView,SafeAreaView,Image,TouchableOpacity,} from 'react-native';
 import { getDatabase, ref, push, update } from 'firebase/database';
 import * as ImagePicker from 'expo-image-picker';
+import globalStyles from '../GlobalStyles';
 
 // Definerer en funktionskomponent kaldet Add_edit_Product, der tager navigation og route som props
 function Add_edit_Product({ navigation, route }) {
@@ -142,12 +143,12 @@ function Add_edit_Product({ navigation, route }) {
 
   // Returnerer JSX for tilføjelses-/redigeringsskærmen
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={globalStyles.containerAddEdit}>
       <ScrollView>
         {Object.keys(initialState).map((key, index) => {
           return (
-            <View style={styles.row} key={index}>
-              <Text style={styles.label}>{key}</Text>
+            <View style={globalStyles.rowAddEdit} key={index}>
+              <Text style={globalStyles.labelAddEdit}>{key}</Text>
               {key === 'imageUri' ? ( // Check if it's the image field
                 <TouchableOpacity onPress={handleImagePick}>
                   {newProduct.imageUri ? (
@@ -163,7 +164,7 @@ function Add_edit_Product({ navigation, route }) {
                 <TextInput
                   value={newProduct[key]}
                   onChangeText={(event) => changeTextInput(key, event)}
-                  style={styles.input}
+                  style={globalStyles.inputAddEdit}
                 />
               )}
             </View>
@@ -178,25 +179,3 @@ function Add_edit_Product({ navigation, route }) {
 
 // Eksporterer Add_edit_Product-komponenten
 export default Add_edit_Product;
-
-// Definerer designet
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  row: {
-    flexDirection: 'row',
-    height: 30,
-    margin: 10,
-  },
-  label: {
-    fontWeight: 'bold',
-    width: 100,
-  },
-  input: {
-    borderWidth: 1,
-    padding: 5,
-    flex: 1,
-  },
-});
