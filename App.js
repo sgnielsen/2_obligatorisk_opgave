@@ -44,7 +44,7 @@ export default function App() {
   const StackNavigation = () => {
     return(
         <Stack.Navigator>
-          <Stack.Screen name={'Product List'} component={ProductList}/>
+          <Stack.Screen name={'Tilgængelige varer'} component={ProductList}/>
           <Stack.Screen name={'Product Details'} component={ProductDetails}/>
           <Stack.Screen name={'Edit Product'} component={Add_edit_Product}/>
         </Stack.Navigator>
@@ -56,7 +56,7 @@ export default function App() {
     <NavigationContainer>
       <Tab.Navigator>
         <Tab.Screen name={'Home'} component={StackNavigation} options={{tabBarIcon: () => ( <Ionicons name="home-outline" size={20} />),headerShown:false}}/>
-        <Tab.Screen name={'Add'} component={Add_edit_Product} options={{tabBarIcon: () => ( <Ionicons name="add-circle-outline" size={20} />)}}/>
+        <Tab.Screen name={'Donation'} component={Add_edit_Product} options={{tabBarIcon: () => ( <Ionicons name="add-circle-outline" size={20} />)}}/>
         <Tab.Screen name={'Profile'} component={Profile} options={{tabBarIcon: () => ( <Ionicons name="person-outline" size={20} />)}}/>
       </Tab.Navigator>
     </NavigationContainer>
