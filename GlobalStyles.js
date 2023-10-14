@@ -47,7 +47,24 @@ inputAddEdit: {
     padding: 5,
     flex: 1,
   },
-
+  searchInput: {
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 5,
+    padding: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 10,
+  },
+  searchIcon: {
+    marginRight: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+  },
+    searchInput: {
+    flex: 1,
+    marginBottom: 10,
+  },  
 });
 
 export default globalStyles;
