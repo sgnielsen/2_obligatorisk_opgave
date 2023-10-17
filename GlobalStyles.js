@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 const globalStyles = StyleSheet.create({
 container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#E4F4E6',
     borderWidth: 1,
     borderRadius: 10,
     margin: 2,
