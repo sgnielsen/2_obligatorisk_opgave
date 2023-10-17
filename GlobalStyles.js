@@ -59,11 +59,13 @@ inputAddEdit: {
   searchIcon: {
     marginRight: 10,
     marginBottom: 10,
+    marginTop:10,
     marginLeft: 10,
   },
     searchInput: {
     flex: 1,
     marginBottom: 10,
+    marginTop:10,
   },  
 });
 
