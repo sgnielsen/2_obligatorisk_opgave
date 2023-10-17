@@ -1,3 +1,4 @@
+// Importerer nødvendige moduler
 import * as React from 'react';
 import { View, Text, FlatList, TouchableOpacity, TextInput } from 'react-native';
 import { useEffect, useState } from "react";
@@ -6,14 +7,17 @@ import { getDatabase, ref, onValue, off } from "firebase/database";
 import Ionicons from 'react-native-vector-icons/Ionicons'; // Importer Ionicons
 
 function ProductList({ navigation }) {
+    // Deklarerer variabler
     const [products, setProducts] = useState();
     const [searchText, setSearchText] = useState("");
     const [filteredProducts, setFilteredProducts] = useState([]);
 
+    // useEffect til at hente produkter fra Firebase-databasen
     useEffect(() => {
         const db = getDatabase();
         const productsRef = ref(db, "Products");
 
+        // Lyt efter ændringer i produktdatabasen
         onValue(productsRef, (snapshot) => {
             const data = snapshot.val();
             if (data) {
@@ -22,17 +26,19 @@ function ProductList({ navigation }) {
             }
         });
 
+        // Ryd op ved at fjerne lytteren, når komponenten unmountes
         return () => {
             off(productsRef);
         };
     }, []);
 
+    // Håndter valg af et produkt og navigering til dets detaljer
     const handleSelectProduct = id => {
         const product = Object.entries(products).find(product => product[0] === id);
         navigation.navigate('Product Details', { product });
     };
 
-    // Opdater filteret produkter, når søgeteksten ændres
+    // useEffect til at opdatere listen af filtrerede produkter baseret på søgeteksten
     useEffect(() => {
         if (products) {
             const filtered = Object.values(products).filter(item =>
